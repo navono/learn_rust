@@ -35,6 +35,26 @@ pub(crate) fn public_function_in_crate() {
     println!("called `my_mod::public_function_in_crate()`");
 }
 
+pub mod my_struct {
+    // A public struct with public field of generic type `T`
+    pub struct OpenBox<T> {
+        pub contents: T,
+    }
+
+    // A public struct with a private field of generic type `T`
+    #[allow(dead_code)]
+    pub struct ClosedBox<T> {
+        contents: T,
+    }
+
+    impl<T> ClosedBox<T> {
+        // A public constructor method
+        pub fn new(contents: T) -> ClosedBox<T> {
+            ClosedBox { contents }
+        }
+    }
+}
+
 // Nested modules follow the same rules for visibility
 mod private_nested {
     #[allow(dead_code)]
