@@ -1,13 +1,41 @@
+// This declaration will look for a file named `modules.rs` or `modules/mod.rs` and will
+// insert its contents inside a module named `my` under this scope
 mod modules;
 
-fn main() {
-    println!("Hello, world!");
-    modules::function();
-    modules::indirect_access();
-    modules::nested::function();
-    modules::public_function_in_crate();
-    modules::call_public_function_in_my_mod();
+// Three `use` declaration
+use modules::function;
+use modules::super_self::my_mod;
+use modules::{call_public_function_in_modules as module_pub_fn, indirect_access};
 
+fn main() {
+    println!("Hello, world!\n");
+
+    mod_output();
+    struct_field();
+    my_mod::indirect_call();
+}
+
+fn mod_output() {
+    function();
+    indirect_access();
+    modules::public_function_in_crate();
+    module_pub_fn();
+
+    println!("\nEntering block");
+    {
+        // This is equivalent to `use modules::nested::function as function`.
+        // This `function()` will shadow the outer one.
+        use crate::modules::nested::function;
+
+        // `use` bindings have a local scope. In this case, the
+        // shadowing of `function()` is only in this block.
+        function();
+
+        println!("Leaving block\n");
+    }
+}
+
+fn struct_field() {
     // Public structs with public fields can be constructed as usual
     let open_box = modules::my_struct::OpenBox { contents: "public" };
 
