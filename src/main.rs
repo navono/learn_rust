@@ -1,7 +1,9 @@
 // This declaration will look for a file named `modules.rs` or `modules/mod.rs` and will
 // insert its contents inside a module named `my` under this scope
-mod modules;
+mod format_print;
 mod functions;
+mod modules;
+mod primitives;
 
 // Three `use` declaration
 use modules::function;
@@ -9,14 +11,17 @@ use modules::super_self::my_mod;
 use modules::{call_public_function_in_modules as module_pub_fn, indirect_access};
 
 fn main() {
-    println!("Hello, world!\n");
+    format_print::print_example::print_example();
+
+    // primitives::basic::primitives();
+    // primitives::tuples::tuples();
 
     // mod_output();
     // struct_field();
     // my_mod::indirect_call();
 
     // func_methods();
-    func_closures();
+    // func_closures();
 }
 
 #[allow(dead_code)]
@@ -67,11 +72,7 @@ fn struct_field() {
 
 #[allow(dead_code)]
 fn func_methods() {
-    use functions::{
-        Rectangle,
-        Point,
-        Pair,
-    };
+    use functions::{Pair, Point, Rectangle};
 
     let rectangle = Rectangle {
         // Associated functions are called using double colons
