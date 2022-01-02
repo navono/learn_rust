@@ -1,6 +1,6 @@
-// This declaration will look for a file named `modules.rs` or `modules/mod.rs` and will
+// This declaration will look for a file named `modules.rs` or `modules/format` and will
 // insert its contents inside a module named `my` under this scope
-mod format_print;
+mod format;
 mod functions;
 mod modules;
 mod primitives;
@@ -11,17 +11,18 @@ use modules::super_self::my_mod;
 use modules::{call_public_function_in_modules as module_pub_fn, indirect_access};
 
 fn main() {
-    format_print::print_example::print_example();
+    format::format::print_format();
 
-    // primitives::basic::primitives();
-    // primitives::tuples::tuples();
+    // primitives::basic::print_primitives();
+    // primitives::tuples::print_tuples();
+    primitives::array::print_array();
 
     // mod_output();
     // struct_field();
     // my_mod::indirect_call();
 
     // func_methods();
-    // func_closures();
+    // functions::closures::print_closure();
 }
 
 #[allow(dead_code)]
@@ -106,8 +107,4 @@ fn func_methods() {
     // Error! Previous `destroy` call "consumed" `pair`
     //pair.destroy();
     // TODO ^ Try uncommenting this line
-}
-
-fn func_closures() {
-    functions::closures::simple_closure();
 }

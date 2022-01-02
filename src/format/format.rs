@@ -14,7 +14,7 @@ use std::fmt::Formatter;
 // Implementing the fmt::Display trait automatically implements the ToString trait which allows us
 // to convert the type to String.
 
-pub fn print_example() {
+pub fn print_format() {
     // In general, the `{}` will be automatically replaced with any
     // arguments. These will be stringified.
     println!("{} days", 31);
@@ -71,7 +71,7 @@ pub fn print_example() {
 
     print_precision();
 
-    print_custom();
+    print_custom_format();
 }
 
 fn print_precision() {
@@ -166,7 +166,7 @@ impl fmt::Binary for Vector2D {
     }
 }
 
-fn print_custom() {
+fn print_custom_format() {
     println!("\n");
     let my_vector = Vector2D { x: 3, y: 4 };
 
