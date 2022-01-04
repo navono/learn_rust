@@ -4,6 +4,7 @@ mod format;
 mod functions;
 mod modules;
 mod primitives;
+mod types;
 
 // Three `use` declaration
 use modules::function;
@@ -11,11 +12,11 @@ use modules::super_self::my_mod;
 use modules::{call_public_function_in_modules as module_pub_fn, indirect_access};
 
 fn main() {
-    format::format::print_format();
+    // format::format::print_format();
 
     // primitives::basic::print_primitives();
     // primitives::tuples::print_tuples();
-    primitives::array::print_array();
+    // primitives::array::print_array();
 
     // mod_output();
     // struct_field();
@@ -23,6 +24,8 @@ fn main() {
 
     // func_methods();
     // functions::closures::print_closure();
+
+    types::structs::print_struct();
 }
 
 #[allow(dead_code)]
