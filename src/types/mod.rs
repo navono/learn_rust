@@ -1,3 +1,4 @@
+pub mod enums;
 /**
 Custom data types
     struct: define a structure

@@ -25,7 +25,8 @@ fn main() {
     // func_methods();
     // functions::closures::print_closure();
 
-    types::structs::print_struct();
+    // types::structs::print_struct();
+    types::enums::print_enums();
 }
 
 #[allow(dead_code)]
